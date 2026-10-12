@@ -1,2 +1,198 @@
-# Car-Rental
-تاجير السيارات 
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تأجير السيارات - تسجيل الدخول / إنشاء حساب</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: #fff;
+            width: 400px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: 0.3s ease;
+        }
+
+        .form-header {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .form-header button {
+            background: none;
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: #888;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .form-header button.active {
+            color: #2a5298;
+            border-bottom: 3px solid #2a5298;
+            padding-bottom: 7px;
+        }
+
+        .form-section {
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            outline: none;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #2a5298;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background: #2a5298;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background: #1e3c72;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="form-header">
+            <button id="loginTab" class="active" onclick="switchForm('login')">تسجيل الدخول</button>
+            <button id="registerTab" onclick="switchForm('register')">إنشاء حساب</button>
+        </div>
+
+        
+        <div id="loginSection" class="form-section active">
+            <h2>تسجيل الدخول إلى حسابك</h2>
+            <form onsubmit="handleLogin(event)">
+                <div class="input-group">
+                    <label for="loginEmail">البريد الإلكتروني</label>
+                    <input type="email" id="loginEmail" required placeholder="example@domain.com">
+                </div>
+                <div class="input-group">
+                    <label for="loginPassword">كلمة المرور</label>
+                    <input type="password" id="loginPassword" required placeholder="********">
+                </div>
+                <button type="submit" class="btn-submit">دخول</button>
+            </form>
+        </div>
+
+        
+        <div id="registerSection" class="form-section">
+            <h2>إنشاء حساب جديد</h2>
+            <form onsubmit="handleRegister(event)">
+                <div class="input-group">
+                    <label for="regName">الاسم الكامل</label>
+                    <input type="text" id="regName" required placeholder="تركي المطيري">
+                </div>
+                <div class="input-group">
+                    <label for="regEmail">البريد الإلكتروني</label>
+                    <input type="email" id="regEmail" required placeholder="example@domain.com">
+                </div>
+                <div class="input-group">
+                    <label for="regPassword">كلمة المرور</label>
+                    <input type="password" id="regPassword" required placeholder="********">
+                </div>
+                <button type="submit" class="btn-submit">تسجيل</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        
+        function switchForm(formType) {
+            const loginTab = document.getElementById('loginTab');
+            const registerTab = document.getElementById('registerTab');
+            const loginSection = document.getElementById('loginSection');
+            const registerSection = document.getElementById('registerSection');
+
+            if (formType === 'login') {
+                loginTab.classList.add('active');
+                registerTab.classList.remove('active');
+                loginSection.classList.add('active');
+                registerSection.classList.remove('active');
+            } else {
+                registerTab.classList.add('active');
+                loginTab.classList.remove('active');
+                registerSection.classList.add('active');
+                loginSection.classList.remove('active');
+            }
+        }
+
+        // 
+        function handleLogin(event) {
+            event.preventDefault();
+            alert('تم تسجيل الدخول بنجاح');
+        }
+
+        // 
+        function handleRegister(event) {
+            event.preventDefault();
+            alert(' يمكنك الآن تسجيل الدخول.');
+            switchForm('login');
+        }
+    </script>
+
+</body>
+</html>
+</html>
